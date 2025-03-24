@@ -1,0 +1,13 @@
+[
+{
+  "model": "mysite.profile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "name": "Андрей Пармон",
+    "image": "profiles/avatar_6SeHXBs.jpg",
+    "birth_date": "1995-05-26",
+    "phone_number": "+375336363146"
+  }
+}
+]
