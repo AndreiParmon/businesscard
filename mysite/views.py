@@ -7,11 +7,15 @@ from django.shortcuts import render
 
 
 def home(request):
-    name = Profile.objects.get()
-    context = {
-        'name': name
-    }
-    return render(request, 'mysite/home.html', context)
+    # name = Profile.objects.get()
+    # context = {
+    #     'name': name
+    # }
+    # return render(request, 'mysite/home.html', context)
+
+
+    return render(request, 'mysite/home.html')
+
 
 def contact(request):
     if request.method == 'POST':
@@ -48,6 +52,7 @@ def contact(request):
         return render(request, 'mysite/contact_success.html')
 
     return render(request, 'mysite/contact.html', {"recaptcha_site_key": settings.RECAPTCHA_SITE_KEY})
+
 
 # def contact(request):
 #    if request.method == 'POST':
