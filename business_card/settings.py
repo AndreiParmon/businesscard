@@ -22,7 +22,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 if os.environ.get("DEBUG") == "False":
@@ -37,6 +36,7 @@ CSRF_COOKIE_SECURE = True
 DEBUG = False
 
 ALLOWED_HOSTS = [
+    'localhost',
     "127.0.0.1",
     "businesscard.pythonanywhere.com"
 ]
@@ -119,6 +119,14 @@ DATABASES = {
 #     }
 # }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        # 'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        # 'LOCATION': 'redis://127.0.0.1:6379',
+    }
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -157,18 +165,29 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+#
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "static/"
 
+
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
+#
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'andrei.parmon@yandex.ru'
 EMAIL_HOST_PASSWORD = 'mnfghrmxfnoykque'
 EMAIL_USE_SSL = True
+CONTACT_EMAIL = 'parmonandrei@gmail.com'
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER

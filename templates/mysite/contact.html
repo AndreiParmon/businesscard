@@ -3,60 +3,82 @@
 {% block title %}Контакты{% endblock %}
 
 {% block content %}
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <h1>Контакты</h1>
 <section id="contact" class="contact-section">
     <div class="container">
         <h2>Свяжитесь со мной</h2>
         <p>Оставьте свои данные, и я обязательно вам отвечу!</p>
-        <form method="post" action="" class="contact-form">
+
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {% for error in form.non_field_errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="post" action="" class="contact-form" id="contactForm">
             {% csrf_token %}
-            {{ form.as_p }}
+
             <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="Ваше имя" required>
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Ваш Email" required>
-            </div>
-            <div class="form-group">
-                <textarea name="message" class="form-control" placeholder="Ваше сообщение" rows="5" required></textarea>
+                {{ form.name }}
+                {% if form.name.errors %}
+                <div class="text-danger">
+                    {% for error in form.name.errors %}
+                    <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+                {% endif %}
             </div>
 
-            <!-- Кнопка с reCAPTCHA -->
-            <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+            <div class="form-group">
+                {{ form.email }}
+                {% if form.email.errors %}
+                <div class="text-danger">
+                    {% for error in form.email.errors %}
+                    <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form.message }}
+                {% if form.message.errors %}
+                <div class="text-danger">
+                    {% for error in form.message.errors %}
+                    <small>{{ error }}</small>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            {{ form.g_recaptcha_response }}
+
+
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+            </div>
+
             <button type="submit" class="btn btn-primary">Отправить</button>
-
-            <input type="hidden" name="g-recaptcha-response" id="recaptchaResponse">
         </form>
     </div>
 </section>
-
-<!-- Подключение Google reCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+        const responseInput = document.getElementById('id_g_recaptcha_response');
+        if (grecaptcha.getResponse()) {
+            responseInput.value = grecaptcha.getResponse();
+        } else {
+            e.preventDefault();
+            alert('Пожалуйста, пройдите проверку reCAPTCHA');
+        }
+    });
+</script>
 
-<!--<section id="contact" class="contact-section">
-    <div class="container">
-        <h2>Свяжитесь со мной</h2>
-        <p>Оставьте свои данные, и я обязательно вам отвечу!</p>
-        <form method="post" action="" class="contact-form">
-
-            {% csrf_token %}
-            {{ form.as_p }}
-            <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="Ваше имя" required>
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Ваш Email" required>
-            </div>
-            <div class="form-group">
-                <textarea name="message" class="form-control" placeholder="Ваше сообщение" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Отправить</button>
-        </form>
-    </div>
-</section>
--->
 <p>
     <a href="/static/files/resume.pdf" download class="btn btn-primary fixed-btn">
         <i class="fas fa-download"></i> Скачать резюме (PDF, 250 KB)

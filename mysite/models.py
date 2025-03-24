@@ -15,11 +15,10 @@ class Profile(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)  # Сначала сохраняем изображение в базу данных
-        img = Image.open(self.image.path)  # Открываем загруженное изображение
-        # Определяем нужные размеры
+        super().save(*args, **kwargs)
+        img = Image.open(self.image.path)
         max_width, max_height = 250, 250
-        # Изменяем размеры, если изображение больше заданных параметров
+
         if img.height > max_height or img.width > max_width:
             output_size = (max_width, max_height)
             img.thumbnail(output_size)
