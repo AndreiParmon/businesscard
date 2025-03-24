@@ -5,7 +5,7 @@
 {% block content %}
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <h1>Контакты</h1>
-<section id="contact" class="contact-section">
+<!--<section id="contact" class="contact-section">
     <div class="container">
         <h2>Свяжитесь со мной</h2>
         <p>Оставьте свои данные, и я обязательно вам отвечу!</p>
@@ -20,21 +20,22 @@
             <div class="form-group">
                 <textarea name="message" class="form-control" placeholder="Ваше сообщение" rows="5" required></textarea>
             </div>
-
+-->
             <!-- Кнопка с reCAPTCHA -->
-            <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+            <!--<div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
             <button type="submit" class="btn btn-primary">Отправить</button>
 
             <input type="hidden" name="g-recaptcha-response" id="recaptchaResponse">
         </form>
     </div>
 </section>
+-->
 
 <!-- Подключение Google reCAPTCHA -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<!--<script src="https://www.google.com/recaptcha/api.js" async defer></script>-->
 
 
-<!--<section id="contact" class="contact-section">
+<section id="contact" class="contact-section">
     <div class="container">
         <h2>Свяжитесь со мной</h2>
         <p>Оставьте свои данные, и я обязательно вам отвечу!</p>
@@ -55,7 +56,7 @@
         </form>
     </div>
 </section>
--->
+
 <p>
     <a href="/static/files/resume.pdf" download class="btn btn-primary fixed-btn">
         <i class="fas fa-download"></i> Скачать резюме (PDF, 250 KB)
