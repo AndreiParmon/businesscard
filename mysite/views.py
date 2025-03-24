@@ -22,19 +22,19 @@ def contact(request):
         user_name = request.POST.get('name')
         user_email = request.POST.get('email')
         message = request.POST.get('message')
-        recaptcha_response = request.POST.get('g-recaptcha-response')
+        # recaptcha_response = request.POST.get('g-recaptcha-response')
 
         # Проверка reCAPTCHA
-        secret_key = settings.RECAPTCHA_SECRET_KEY
-        payload = {"secret": secret_key, "response": recaptcha_response}
-        response = requests.post("https://www.google.com/recaptcha/api/siteverify", data=payload)
-        result = response.json()
-
-        if not result.get("success"):
-            return render(request, 'mysite/contact.html', {
-                "error": "Ошибка reCAPTCHA. Попробуйте снова.",
-                "recaptcha_site_key": settings.RECAPTCHA_SITE_KEY
-            })
+        # secret_key = settings.RECAPTCHA_SECRET_KEY
+        # payload = {"secret": secret_key, "response": recaptcha_response}
+        # response = requests.post("https://www.google.com/recaptcha/api/siteverify", data=payload)
+        # result = response.json()
+        #
+        # if not result.get("success"):
+        #     return render(request, 'mysite/contact.html', {
+        #         "error": "Ошибка reCAPTCHA. Попробуйте снова.",
+        #         "recaptcha_site_key": settings.RECAPTCHA_SITE_KEY
+        #     })
 
         # Отправка email
         subject = f"Сообщение от {user_name}"
@@ -51,7 +51,7 @@ def contact(request):
 
         return render(request, 'mysite/contact_success.html')
 
-    return render(request, 'mysite/contact.html', {"recaptcha_site_key": settings.RECAPTCHA_SITE_KEY})
+    return render(request, 'mysite/contact.html')
 
 
 # def contact(request):
