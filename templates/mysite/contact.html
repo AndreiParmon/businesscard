@@ -11,6 +11,7 @@
         <p>Оставьте свои данные, и я обязательно вам отвечу!</p>
         <form method="post" action="" class="contact-form">
             {% csrf_token %}
+            {{ form.as_p }}
             <div class="form-group">
                 <input type="text" name="name" class="form-control" placeholder="Ваше имя" required>
             </div>
