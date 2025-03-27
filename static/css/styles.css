@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Gill Sans", sans-serif;
     margin: 0;
     padding: 0;
     transition: background-color 0.3s, color 0.3s;
@@ -40,10 +40,19 @@ nav a.active {
 
 nav a:hover,
 nav a:target {
-  color: #fff;
-  font-weight: bold;
+    color: #fff;
+    font-weight: bold;
 }
 
+/*-----------------------------------------------------------------------------*/
+.main-menu {
+  display: flex;
+  flex-wrap: wrap; /* Разрешаем перенос строк */
+  gap: 0px; /* Отступы между элементами */
+  padding: 1px;
+}
+
+/*---------------------------------------------------------------------------*/
 footer {
     background: #333;
     text-align: center;
@@ -141,8 +150,8 @@ footer {
     }
 
     .profile-img {
-        width: 120px;
-        height: 120px;
+        width: 220px;
+        height: 220px;
     }
 }
 

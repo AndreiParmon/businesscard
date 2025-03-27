@@ -13,16 +13,10 @@
     <div class="logo">
         <img src="/static/images/logo_x32.png" alt="logo">
     </div>
-
     <nav class="main-menu">
         <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Главная</a>
-        <a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">О нас</a>
         <a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %}">Контакты</a>
-
-
-        <!--        <a href="/">Главная</a>-->
-        <!--        <a href="/contact/">Контакты</a>-->
-        <!--        <a href="/about">Обо мне</a>-->
+        <a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">Обо мне</a>
         <a href="/admin" class="admin-link">Админ-панель</a>
     </nav>
     <label class="theme-switch">
