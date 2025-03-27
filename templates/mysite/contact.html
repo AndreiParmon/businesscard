@@ -4,12 +4,32 @@
 
 {% block content %}
 
-<h1>Контакты</h1>
+<div class="top-action-bar">
+    <h1>Контакты</h1>
+
+    <!-- Социальные иконки -->
+    <div class="social-icons">
+        <a href="https://github.com/AndreiParmon" target="_blank" aria-label="GitHub">
+            <img src="/static/images/github-icon.png" alt="GitHub" class="social-icon">
+        </a>
+        <a href="https://www.linkedin.com/in/andrei-parmon-2845a0354/" target="_blank" aria-label="LinkedIn">
+            <img src="/static/images/linkedin-icon.png" alt="LinkedIn" class="social-icon">
+        </a>
+        <a href="https://www.instagram.com/andrei_parmon/" target="_blank" aria-label="Instagram">
+            <img src="/static/images/instagram-icon.png" alt="Instagram" class="social-icon">
+        </a>
+    </div>
+
+    <!-- Кнопка скачивания -->
+    <a href="/static/files/resume.pdf" download class="download-btn">
+        <i class="fas fa-download"></i> Скачать резюме
+    </a>
+</div>
+
 <section id="contact" class="contact-section">
     <div class="container">
         <h2>Свяжитесь со мной</h2>
         <p>Оставьте свои данные, и я обязательно вам отвечу!</p>
-
         {% if form.non_field_errors %}
         <div class="alert alert-danger">
             {% for error in form.non_field_errors %}
@@ -17,10 +37,8 @@
             {% endfor %}
         </div>
         {% endif %}
-
         <form method="post" action="" class="contact-form" id="contactForm">
             {% csrf_token %}
-
             <div class="form-group">
                 {{ form.name }}
                 {% if form.name.errors %}
@@ -56,7 +74,6 @@
 
             {{ form.g_recaptcha_response }}
 
-
             <div class="form-group">
                 <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
             </div>
@@ -78,22 +95,4 @@
         }
     });
 </script>
-
-<p>
-    <a href="/static/files/resume.pdf" download class="btn btn-primary fixed-btn">
-        <i class="fas fa-download"></i> Скачать резюме (PDF, 250 KB)
-    </a>
-</p>
-
-<div class="social-column">
-    <a href="https://github.com/AndreiParmon " target="_blank">
-        <img src="/static/images/github-icon.png" alt="GitHub" class="social-icon">
-    </a>
-    <a href="https://www.linkedin.com/in/andrei-parmon-2845a0354/" target="_blank">
-        <img src="/static/images/linkedin-icon.png" alt="LinkedIn" class="social-icon">
-    </a>
-    <a href="https://www.instagram.com/andrei_parmon/" target="_blank">
-        <img src="/static/images/instagram-icon.png" alt="Instagram" class="social-icon">
-    </a>
-</div>
 {% endblock %}

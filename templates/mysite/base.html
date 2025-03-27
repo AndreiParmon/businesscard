@@ -9,16 +9,41 @@
     <script src="/static/js/theme.js"></script>
 </head>
 <body>
-<header>
-    <nav>
-        <a href="/">Главная</a> | <a href="/contact/">Контакты</a> | <a href="/about/">О себе</a> |
+<header class="header">
+    <div class="logo">
+        <img src="/static/images/logo_x32.png" alt="logo">
+    </div>
+
+    <nav class="main-menu">
+        <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Главная</a>
+        <a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">О нас</a>
+        <a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %}">Контакты</a>
+
+
+        <!--        <a href="/">Главная</a>-->
+        <!--        <a href="/contact/">Контакты</a>-->
+        <!--        <a href="/about">Обо мне</a>-->
         <a href="/admin" class="admin-link">Админ-панель</a>
-        <label class="switch">
-            <input type="checkbox" id="theme-toggle">
-            <span class="slider"></span>
-        </label>
     </nav>
+    <label class="theme-switch">
+        <input type="checkbox" class="theme-checkbox">
+        <span class="slider"></span>
+    </label>
 </header>
+
+<!--<header>-->
+<!--    <nav>-->
+<!--        <a href="/">Главная</a> | <a href="/contact/">Контакты</a> | <a href="/about/">Обо мне</a> |-->
+<!--        <a href="/admin" class="admin-link">Админ-панель</a>-->
+<!--        <div class="theme-switcher-wrapper">-->
+<!--            <label class="theme-switcher">-->
+<!--                <input type="checkbox" class="theme-switcher-checkbox">-->
+<!--                <span class="slider"></span>-->
+<!--                <span class="theme-icon">🌓</span>-->
+<!--            </label>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</header>-->
 <main>
     {% block content %}{% endblock %}
 </main>

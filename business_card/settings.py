@@ -24,16 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-if os.environ.get("DEBUG") == "False":
-    DEBUG = False
-else:
-    DEBUG = True
+# if os.environ.get("DEBUG") == "False":
+#     DEBUG = False
+# else:
+#     DEBUG = True
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -98,26 +98,26 @@ WSGI_APPLICATION = 'business_card.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("MYSQL_DBNAME"),
-        "USER": os.getenv("MYSQL_USER"),
-        "PASSWORD": os.getenv("MYSQL_PASSWORD"),
-        "HOST": os.getenv("MYSQL_HOST"),
-        "OPTIONS": {
-            "init_command": "SET NAMES 'utf8mb4';SET sql_mode = 'STRICT_TRANS_TABLES'",
-            "charset": "utf8mb4",
-        },
-    }
-}
-
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": os.getenv("MYSQL_DBNAME"),
+#         "USER": os.getenv("MYSQL_USER"),
+#         "PASSWORD": os.getenv("MYSQL_PASSWORD"),
+#         "HOST": os.getenv("MYSQL_HOST"),
+#         "OPTIONS": {
+#             "init_command": "SET NAMES 'utf8mb4';SET sql_mode = 'STRICT_TRANS_TABLES'",
+#             "charset": "utf8mb4",
+#         },
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 CACHES = {
     'default': {
@@ -166,26 +166,47 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media"
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / "media"
+#
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR / "static/"
+
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
-#
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'mail.pythonanywhere.com'
+# EMAIL_PORT = 587  # Или 465 для SSL
+# EMAIL_USE_TLS = True  # Для порта 587
+# # EMAIL_USE_SSL = True  # Для порта 465
+# EMAIL_HOST_USER = 'businesscard'  # Ваш логин PythonAnywhere (без @pythonanywhere.com)
+# EMAIL_HOST_PASSWORD = 'xsK#HKLhjd$5gH9'  # Пароль от PythonAnywhere
+# DEFAULT_FROM_EMAIL = 'businesscard@pythonanywhere.com'  # Полный email
+# SERVER_EMAIL = 'businesscard@pythonanywhere.com'  # Для системных сообщений
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'parmonandrei@gmail.com'
+# EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+# DEFAULT_FROM_EMAIL = 'parmonandrei@gmail.com'
+# EMAIL_TIMEOUT = 30
+# CONTACT_EMAIL = 'parmonandrei@gmail.com'
 
 EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'andrei.parmon@yandex.ru'
-EMAIL_HOST_PASSWORD = 'mnfghrmxfnoykque'
+EMAIL_HOST_PASSWORD = 'xcqbnbvrdaejtclk'
 EMAIL_USE_SSL = True
 CONTACT_EMAIL = 'parmonandrei@gmail.com'
 

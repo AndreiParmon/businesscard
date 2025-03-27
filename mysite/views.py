@@ -17,6 +17,11 @@ def home(request):
     return render(request, 'mysite/home.html', context)
 
 
+def my_view(request):
+    current_page = request.path
+    return render(request, 'template.html', {'current_page': current_page})
+
+
 class ContactView(View):
     template_name = 'mysite/contact.html'
     success_template = 'mysite/contact_success.html'

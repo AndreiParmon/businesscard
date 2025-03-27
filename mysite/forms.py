@@ -40,7 +40,7 @@ class ContactForm(forms.Form):
 
     def clean_message(self):
         message = self.cleaned_data['message'].strip()
-        if len(message) < 10:
+        if len(message) < 5:
             raise ValidationError("Сообщение слишком короткое")
         return message
 
