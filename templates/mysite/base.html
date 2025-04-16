@@ -11,26 +11,17 @@
 <body>
 <header class="header">
     <div class="logo">
-        <img src="/static/images/logo_x32.png" alt="logo">
     </div>
     <nav class="main-menu">
         <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Главная</a>
-        <a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %}">Контакты</a>
+        <a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %}">Обратная связь</a>
         <a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">Обо мне</a>
-        <a href="/admin" class="admin-link">Админ-панель</a>
     </nav>
-    <label class="theme-switch">
-        <input type="checkbox" class="theme-checkbox">
-        <span class="slider"></span>
-    </label>
 </header>
 <main>
     {% block content %}{% endblock %}
 </main>
 </body>
-<footer>
-    <p>&copy; 2025 Андрей. Все права защищены.</p>
-</footer>
 </html>
 
 

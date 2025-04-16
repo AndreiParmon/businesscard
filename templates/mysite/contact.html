@@ -1,12 +1,10 @@
 {% extends 'mysite/base.html' %}
 
-{% block title %}Контакты{% endblock %}
+{% block title %}Обратная связь{% endblock %}
 
 {% block content %}
 
 <div class="top-action-bar">
-    <h1>Контакты</h1>
-
     <!-- Социальные иконки -->
     <div class="social-icons">
         <a href="https://github.com/AndreiParmon" target="_blank" aria-label="GitHub">
@@ -21,14 +19,14 @@
     </div>
 
     <!-- Кнопка скачивания -->
-    <a href="/static/files/resume.pdf" download class="download-btn">
+    <a href="/static/files/resume.pdf" download class="glow-on-hover">
         <i class="fas fa-download"></i> Скачать резюме
     </a>
 </div>
 
 <section id="contact" class="contact-section">
     <div class="container">
-        <h2>Свяжитесь со мной</h2>
+        <h1>Свяжитесь со мной</h1>
         <p>Оставьте свои данные, и я обязательно вам отвечу!</p>
         {% if form.non_field_errors %}
         <div class="alert alert-danger">
@@ -78,7 +76,7 @@
                 <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Отправить</button>
+            <button type="submit" class="btn-primary">Отправить</button>
         </form>
     </div>
 </section>
