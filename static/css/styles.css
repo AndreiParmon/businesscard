@@ -581,26 +581,160 @@ nav a:target {
     height: auto;
 }
 
-.about-text {
+.experience-section {
     max-width: 800px;
-    padding-right: 30px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.about-section p {
-    font-size: 1.2rem;
-    color: #fff;
+.experience-title {
+    font-size: 1.8rem;
+    color: #003440;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.experience-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #003440, #00a0e9);
+}
+
+.experience-list {
+    list-style: none;
+    padding: 0;
+}
+
+.experience-item {
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 1.1rem;
     line-height: 1.6;
-    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
 }
 
-/* Адаптация */
-@media (max-width: 1024px) {
-    .about-content {
-        gap: 40px;
+.experience-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #f0f8ff;
+}
+
+.experience-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    min-width: 30px;
+    text-align: center;
+    color: #00a0e9;
+}
+
+.experience-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.experience-title {
+    font-size: 1.8rem;
+    color: #003440;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.experience-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #003440, #00a0e9);
+}
+
+.experience-list {
+    list-style: none;
+    padding: 0;
+}
+
+.experience-item {
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.experience-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .experience-section {
+        padding: 20px;
     }
 
-    .about-photo {
-        max-width: 400px;
+    .experience-title {
+        font-size: 1.5rem;
+    }
+
+    .experience-item {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+
+    .experience-icon {
+        font-size: 1.2rem;
+        margin-right: 10px;
+    }
+}
+
+/* Анимация для иконок */
+.experience-item:hover .experience-icon {
+    animation: icon-bounce 0.5s ease;
+}
+
+@keyframes icon-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
     }
 }
 
@@ -612,11 +746,6 @@ nav a:target {
     .about-photo {
         max-width: 100%;
         margin-bottom: 30px;
-    }
-
-    .about-text {
-        padding-right: 0;
-        text-align: center;
     }
 
     .about-section .btn {
@@ -726,4 +855,5 @@ nav a:target {
         transition: none !important;
     }
 }
+
 /*-------------------------------------------------------------------*/
