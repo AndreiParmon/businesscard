@@ -703,6 +703,44 @@ nav a:target {
     text-align: center;
 }
 
+.work-link {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #003440;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.work-link a {
+  transition: transform 0.3s ease;
+}
+
+.work-link a:hover {
+  transform: scale(1.05);
+}
+
+.work-link img {
+  vertical-align: middle;
+  border-radius: 4px;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  .work-link {
+    margin-top: 20px;
+    font-size: 1rem;
+    flex-direction: column;
+  }
+
+  .work-link img {
+    width: 70px;
+  }
+}
+
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
     .experience-section {
